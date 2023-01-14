@@ -3,6 +3,9 @@ package com.api.resourcecontrol.services;
 import com.api.resourcecontrol.models.FoodModel;
 import com.api.resourcecontrol.repositories.FoodRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,8 +26,8 @@ public class FoodService {
         return foodRepository.save(foodModel);
     }
 
-    public List<FoodModel> findAll() {
-        return foodRepository.findAll();
+    public Page<FoodModel> findAll(Pageable pageable) {
+        return foodRepository.findAll(pageable);
     }
 
     public Optional<FoodModel> findById(UUID id) {

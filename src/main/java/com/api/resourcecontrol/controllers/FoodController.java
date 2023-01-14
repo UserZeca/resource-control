@@ -6,6 +6,10 @@ import com.api.resourcecontrol.services.FoodService;
 import com.fasterxml.jackson.databind.util.BeanUtil;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,9 +40,9 @@ public class FoodController {
     }
 
     @GetMapping
-    public ResponseEntity<List<FoodModel>> getAllFoods(){
+    public ResponseEntity<Page<FoodModel>> getAllFoods(@PageableDefault(page = 0 , size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
 
-        return ResponseEntity.status(HttpStatus.OK).body(foodService.findAll());
+        return ResponseEntity.status(HttpStatus.OK).body(foodService.findAll(pageable));
     }
 
     @GetMapping("/{id}")
@@ -76,15 +80,6 @@ public class FoodController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Food not found");
         }
 
-        /*
-        var foodModel = foodModelOptional.get();
-
-        foodModel.setFoodName(foodDto.getFoodName());
-        foodModel.setPlaceOfOrigin(foodDto.getPlaceOfOrigin());
-        foodModel.setDestination(foodDto.getDestination());
-        foodModel.setResponsibleForTransport(foodDto.getResponsibleForTransport());
-        */
-
         var foodModel = new FoodModel();
         BeanUtils.copyProperties(foodDto, foodModel);
         foodModel.setId(foodModelOptional.get().getId());
@@ -92,5 +87,7 @@ public class FoodController {
 
         return ResponseEntity.status(HttpStatus.OK).body(foodService.save(foodModel));
     }
+
+
 
 }
