@@ -13,9 +13,4 @@ public class ResourceControlApplication {
 		SpringApplication.run(ResourceControlApplication.class, args);
 	}
 
-	@GetMapping("/")
-	public String index(){
-		return "Olá mundo!";
-	}
-
 }
