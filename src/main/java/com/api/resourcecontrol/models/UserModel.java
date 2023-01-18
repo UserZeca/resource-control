@@ -16,6 +16,16 @@ import java.util.UUID;
 public class UserModel implements UserDetails, Serializable {
     private static final long serialVersionUID = 1L;
 
+    public UserModel(){
+    }
+
+    public UserModel(String username, String password, GroupName groupName){
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.groupName = groupName;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID userId;
