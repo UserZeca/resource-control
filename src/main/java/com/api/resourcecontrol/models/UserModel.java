@@ -1,5 +1,7 @@
 package com.api.resourcecontrol.models;
 
+import com.api.resourcecontrol.enums.GroupName;
+import com.api.resourcecontrol.enums.RoleName;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,6 +26,18 @@ public class UserModel implements UserDetails, Serializable {
     @Column(nullable = false)
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private GroupName groupName;
+
+    public GroupName getGroup() {
+        return this.groupName;
+    }
+
+    public void setGroup(GroupName groupName) {
+        this.groupName = groupName;
+    }
+
     @ManyToMany
     @JoinTable(name = "TB_USER_ROLES",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -35,6 +49,7 @@ public class UserModel implements UserDetails, Serializable {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.roles;
     }
+
 
     @Override
     public String getPassword() {
