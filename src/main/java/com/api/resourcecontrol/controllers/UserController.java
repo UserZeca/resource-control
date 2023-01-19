@@ -142,16 +142,17 @@ public class UserController {
 
         foodModel.setFoodId(foodModelOptional.get().getFoodId());
 
+
         foodModel.setFoodName(foodModelOptional.get().getFoodName());
         foodModel.setPlaceOfOrigin(foodModelOptional.get().getPlaceOfOrigin());
         foodModel.setDestination(foodModelOptional.get().getDestination());
         foodModel.setResponsibleForTransport(foodModelOptional.get().getResponsibleForTransport());
         foodModel.setRegistrationDate(foodModelOptional.get().getRegistrationDate());
 
+
         foodModels.add(foodModel);
         foodModels.addAll(userModelOptional.get().getFoodModels());
         userModelOptional.get().getFoodModels();
-
 
         userModelOptional.get().setFoodModels(foodModels);
 
@@ -175,6 +176,9 @@ public class UserController {
         if(!userModelOptional.isPresent()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
         }
+
+
+
         userService.delete(userModelOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("User deleted successfully.");
 

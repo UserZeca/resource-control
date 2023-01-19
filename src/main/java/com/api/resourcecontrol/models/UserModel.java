@@ -4,6 +4,8 @@ import com.api.resourcecontrol.enums.GroupName;
 import com.api.resourcecontrol.enums.RoleName;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -14,6 +16,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "TB_USER")
+//@OnDelete(action = OnDeleteAction.CASCADE)
 public class UserModel implements UserDetails, Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -49,12 +52,12 @@ public class UserModel implements UserDetails, Serializable {
     }
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
     @JoinTable(name = "TB_USER_ROLES",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private List<RoleModel> roles;
+
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "TB_USER_FOOD",
