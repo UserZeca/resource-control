@@ -20,7 +20,6 @@ public class UserModel implements UserDetails, Serializable {
     }
 
     public UserModel(String username, String password, GroupName groupName){
-        this.userId = userId;
         this.username = username;
         this.password = password;
         this.groupName = groupName;
@@ -29,6 +28,8 @@ public class UserModel implements UserDetails, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID userId;
+
+
 
     @Column(nullable = false, unique = true)
     private String username;
@@ -48,7 +49,7 @@ public class UserModel implements UserDetails, Serializable {
         this.groupName = groupName;
     }
 
-    @ManyToMany
+    @ManyToMany()
     @JoinTable(name = "TB_USER_ROLES",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
@@ -105,5 +106,13 @@ public class UserModel implements UserDetails, Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<RoleModel> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RoleModel> roles) {
+        this.roles = roles;
     }
 }

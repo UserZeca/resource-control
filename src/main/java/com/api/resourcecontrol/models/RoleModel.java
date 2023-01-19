@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -15,10 +16,10 @@ public class RoleModel implements GrantedAuthority, Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID roleId;
 
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, unique = true)
     private RoleName roleName;
-
 
     @Override
     public String getAuthority() {
@@ -40,4 +41,6 @@ public class RoleModel implements GrantedAuthority, Serializable {
     public void setRoleName(RoleName roleName) {
         this.roleName = roleName;
     }
+
+
 }
