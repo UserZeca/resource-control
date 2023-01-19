@@ -3,6 +3,7 @@ package com.api.resourcecontrol.models;
 import com.api.resourcecontrol.enums.GroupName;
 import com.api.resourcecontrol.enums.RoleName;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -29,8 +30,6 @@ public class UserModel implements UserDetails, Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID userId;
 
-
-
     @Column(nullable = false, unique = true)
     private String username;
 
@@ -49,12 +48,28 @@ public class UserModel implements UserDetails, Serializable {
         this.groupName = groupName;
     }
 
-    @ManyToMany()
+    @ManyToMany(cascade = CascadeType.ALL)
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
     @JoinTable(name = "TB_USER_ROLES",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private List<RoleModel> roles;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "TB_USER_FOOD",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "food_id")
+    )
+    private List<FoodModel> foodModels;
+
+    public List<FoodModel> getFoodModels() {
+        return foodModels;
+    }
+
+    public void setFoodModels(List<FoodModel> foodModels) {
+        this.foodModels = foodModels;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

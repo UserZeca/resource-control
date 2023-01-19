@@ -13,7 +13,7 @@ public class FoodModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private UUID foodId;
 
     @Column(nullable = false, length = 40)
     private String foodName;
@@ -31,11 +31,11 @@ public class FoodModel implements Serializable {
     private LocalDateTime registrationDate;
 
     public UUID getId() {
-        return id;
+        return foodId;
     }
 
     public void setId(UUID id) {
-        this.id = id;
+        this.foodId = id;
     }
 
     public String getFoodName() {
@@ -76,5 +76,13 @@ public class FoodModel implements Serializable {
 
     public void setRegistrationDate(LocalDateTime registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    public UUID getFoodId() {
+        return foodId;
+    }
+
+    public void setFoodId(UUID foodId) {
+        this.foodId = foodId;
     }
 }

@@ -52,7 +52,6 @@ public class FoodController {
         if(!foodModelOptional.isPresent()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Food not found");
         }
-
         return ResponseEntity.status((HttpStatus.OK)).body(foodModelOptional.get());
     }
 

@@ -2,6 +2,7 @@ package com.api.resourcecontrol.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 
+
 public class FoodDto {
 
     @NotBlank
