@@ -53,6 +53,7 @@ spring.jpa.properties.hibernate.jdbc.lob.lab.non_contextual_creation=true
 
 - Execute a classe ResourceControlApplication 
 - Execute o arquivo SQL "queryStartResourceControl" para carregar dados pré prontos
+- Vá até o arquivo "WebSecurityConfig"
 
 
 ## ⚙️ Testando a aplicação
@@ -68,15 +69,44 @@ Atenção: No postman você deve utilizar a aba authorization para adicionar o *
 
  Rotas para obter dados de usuários e de alimentos (food).
  
- 
-
 ```
 # Rota para obter alimentos (USER e ADMIN tem acesso)
 http://localhost:8080/food
-http://localhost:8080/food/nome do alimento
+http://localhost:8080/food/id do alimento
+
+Rota para obter usuários (ADMIN tem acesso)
 http://localhost:8080/user/search
+http://localhost:8080/user/search/nome do usuário
+```
+
+### 🔩 POST
+
+ Rotas para adicionar dados de usuários e de alimentos (food).
+ 
+```
+# Rota para adicionar alimentos (ADMIN tem acesso)
+http://localhost:8080/food
+
+Rota para postar usuários ( ADMIN tem acesso)
+
+http://localhost:8080/user/signIn/create/
 
 ```
+
+
+### 🔩 PUT
+
+ Rotas para editar dados de usuários e de alimentos (food).
+ 
+```
+# Rota para editar alimentos (ADMIN tem acesso)
+http://localhost:8080/food/id do alimento
+
+Rota para editar acesso usuários do usuário(essa rota é necessaria pais o acesso ao usuaário é uma role separada da tabela usuário) (ADMIN tem acesso)
+http://localhost:8080/user/signIn/create/
+
+```
+
 
 ### ⌨️ E testes de estilo de codificação
 
