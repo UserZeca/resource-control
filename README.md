@@ -57,14 +57,25 @@ spring.jpa.properties.hibernate.jdbc.lob.lab.non_contextual_creation=true
 
 ## ⚙️ Testando a aplicação
 
-Para testar a Aplicação use o Postman, que permitirá realizar requisições GET, POST, DELETE e PUT
+Para testar a Aplicação use o Postman, que permitirá realizar requisições GET, POST, DELETE e PUT.
 
-### 🔩 Requisições GET
+Para começar use como padrão **username = "anna"** e **password= "senha123"**, é possivel cadastrar usuários comuns via endpoint porém usuários ADMIN
+somente serão definidos via query diretamente no banco de dados.
+
+Atenção: No postman você deve utilizar a aba authorization para adicionar o **username** e o **password** para ter acesso aos metodos. 
+
+### 🔩 GET
+
+ Rotas para obter dados de usuários e de alimentos (food).
  
-Explique que eles verificam esses testes e porquê.
+ 
 
 ```
-Dar exemplos
+# Rota para obter alimentos (USER e ADMIN tem acesso)
+http://localhost:8080/food
+http://localhost:8080/food/nome do alimento
+http://localhost:8080/user/search
+
 ```
 
 ### ⌨️ E testes de estilo de codificação
