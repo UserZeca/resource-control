@@ -158,4 +158,4 @@ Dentro dessa tabela temos informações sobre o nome da comida, origem, transpor
 
 ## ✒️ Autor
 
-* **Ezequias Kluyvert** - *Trabalho Inicial* - [umdesenvolvedor](https://github.com/UserZeca) 😊
+* [**Ezequias Kluyvert**](https://github.com/UserZeca) 😊
