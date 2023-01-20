@@ -17,7 +17,7 @@ public class WebSecurityConfig {
         http
                 .httpBasic()
                 .and()
-/*                .authorizeHttpRequests()
+                .authorizeHttpRequests()
                 .requestMatchers(HttpMethod.GET, "/user/search").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.GET, "/user/search/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.POST, "/user/signIn/**").permitAll()
@@ -30,7 +30,7 @@ public class WebSecurityConfig {
                 .requestMatchers(HttpMethod.PUT, "/food/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
- */             .csrf().disable();
+                .csrf().disable();
         return  http.build();
     }
 
