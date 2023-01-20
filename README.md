@@ -22,7 +22,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 - [Postman](https://www.postman.com/downloads/)
 - [Intellij](https://www.jetbrains.com/pt-br/idea/download/) (ou qualquer outra IDE)
 
-### 🔧 Instalação
+### 🔧 Instalação/Configuração
 
 - Clone o projeto via git
 
@@ -36,36 +36,46 @@ ou baixe-o diretamente pelo github.
 
 - Abra o projeto em sua IDE 
 
-Diga como essa etapa será:
+### Com o projeto aberto:
+
+- Abra o pdAdmin 4 (ou use a interface padrão do postgre via terminal/cmd) e crie um banco de dados com o nome "resource-control-db"
+- Abra o arquivo application.properties e altere para sua senha do banco de dados
+
+```bash
+spring.datasource.url= jdbc:postgresql://localhost:5432/resource-control-db
+spring.datasource.username=postgres
+spring.datasource.password= COLOQUE SUA SENHA AQUI
+spring.jpa.hibernate.ddl-auto=update
+
+spring.jpa.properties.hibernate.jdbc.lob.lab.non_contextual_creation=true
 
 ```
-Dar exemplos
-```
 
-E repita:
+- Execute a classe ResourceControlApplication 
+- Execute o arquivo SQL "queryStartResourceControl" para carregar dados pré prontos
 
-```
-Até finalizar
-```
-
-Termine com um exemplo de como obter dados do sistema ou como usá-los para uma pequena demonstração.
 
 ## ⚙️ Testando a aplicação
 
-- Com o projeto aberto:
-[ ] Abra o arquivo 
+Para testar a Aplicação use o Postman, que permitirá realizar requisições GET, POST, DELETE e PUT.
 
-, execute a classe ResourceControlApplication
-- 
-- Execute o arquivo SQL "queryStartResourceControl" 
-- Abra o Postman
+Para começar use como padrão **username = "anna"** e **password= "senha123"**, é possivel cadastrar usuários comuns via endpoint porém usuários ADMIN
+somente serão definidos via query diretamente no banco de dados.
 
-### 🔩 Analise os testes de ponta a ponta
+Atenção: No postman você deve utilizar a aba authorization para adicionar o **username** e o **password** para ter acesso aos metodos. 
 
-Explique que eles verificam esses testes e porquê.
+### 🔩 GET
+
+ Rotas para obter dados de usuários e de alimentos (food).
+ 
+ 
 
 ```
-Dar exemplos
+# Rota para obter alimentos (USER e ADMIN tem acesso)
+http://localhost:8080/food
+http://localhost:8080/food/nome do alimento
+http://localhost:8080/user/search
+
 ```
 
 ### ⌨️ E testes de estilo de codificação
