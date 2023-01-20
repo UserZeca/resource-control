@@ -15,10 +15,14 @@ Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 
 - [Git](https://git-scm.com/downloads)
-- [Node.js](https://nodejs.org/en/download/)(usei a versão mais recente 18.13.0)
+- [Node.js](https://nodejs.org/en/download/) (usei a versão mais recente 18.13.0)
 - [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) 
 - [PostgreSQL (version 15.1)](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
+- pgAdmin 4 (Vem junto com o download do PostgreSQL)
+- [Postman](https://www.postman.com/downloads/)
+- [Intellij](https://www.jetbrains.com/pt-br/idea/download/) (ou qualquer outra IDE)
 
+### 🔧 Instalação
 
 - Clone o projeto via git
 
@@ -27,11 +31,10 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 $ git clone https://github.com/UserZeca/resource-control
 
 ```
+
 ou baixe-o diretamente pelo github.
 
-### 🔧 Instalação
-
-Uma série de exemplos passo-a-passo que informam o que você deve executar para ter um ambiente de desenvolvimento em execução.
+- Abra o projeto em sua IDE 
 
 Diga como essa etapa será:
 
@@ -47,9 +50,15 @@ Até finalizar
 
 Termine com um exemplo de como obter dados do sistema ou como usá-los para uma pequena demonstração.
 
-## ⚙️ Executando os testes
+## ⚙️ Testando a aplicação
 
-Explicar como executar os testes automatizados para este sistema.
+- Com o projeto aberto:
+[ ] Abra o arquivo 
+
+, execute a classe ResourceControlApplication
+- 
+- Execute o arquivo SQL "queryStartResourceControl" 
+- Abra o Postman
 
 ### 🔩 Analise os testes de ponta a ponta
 
