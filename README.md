@@ -105,16 +105,34 @@ http://localhost:8080/food/id do alimento
 Rota para editar acesso usuários do usuário(essa rota é necessaria pais o acesso ao usuaário é uma role separada da tabela usuário) (ADMIN tem acesso)
 http://localhost:8080/user/signIn/create/
 
+
+```
+
+
+### 🔩 DELETE
+
+ Rotas para editar dados de usuários e de alimentos (food).
+ 
+```
+# Rota para deletar alimentos (ADMIN tem acesso)
+http://localhost:8080/food/id do alimento
+
+Rota para editar acesso usuários do usuário(essa rota é necessaria pais o acesso ao usuaário é uma role separada da tabela usuário) (ADMIN tem acesso)
+http://localhost:8080/user/nome do usuário
+
+
 ```
 
 
-### ⌨️ E testes de estilo de codificação
-
-Explique que eles verificam esses testes e porquê.
+### ⌨️ Metodos que envolvem vinculo de chave estrangeira 
 
 ```
-Dar exemplos
+
+# Vincular alimento a algum usuário comum
+http://localhost:8080/user/food/{id}/responsibleForTransport/{username}
+
 ```
+
 
 ## 📦 Implantação
 
