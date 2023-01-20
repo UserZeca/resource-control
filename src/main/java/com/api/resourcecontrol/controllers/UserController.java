@@ -73,11 +73,17 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(userModel));
     }
 
+
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody String username, @RequestBody String password ){
 
+        Optional<UserModel> userModelOptional = userService.findByUsername(username);
 
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body("Login with success!");
+        if(!userModelOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(userModelOptional.get().getUserId());
     }
 
     @PutMapping("/signIn/access/{username}")
